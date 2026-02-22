@@ -119,11 +119,28 @@ sequenceDiagram
 
 ```
 .
-├── agent.py
+├── agents/
+│   └── agent.py              # Main A2A game loop
+│
+├── tools/
+│   ├── analyze.py            # analyze_crypto_data() and similar
+│   └── transactions.py       # execute_transaction() logic
+│
+├── workers/
+│   └── action_space.py       # Tool registration / worker wiring for GAME SDK
+│
+├── scripts/
+│   ├── app.py                # Early prototype / REST entry point
+│   └── send_tx.py            # Standalone transaction utility
+│
 ├── .env
 ├── requirements.txt
 └── README.md
 ```
+
+The structure separates **what the agent does** (`tools/`) from **how it's orchestrated** (`agents/`) and **how tools are exposed** to the G.A.M.E. SDK (`workers/`). The `scripts/` folder preserves the original prototype files for reference.
+
+As the project grows, new capabilities slot in cleanly — e.g. `agents/market_agent.py`, `tools/oracle.py`, or `workers/dao_worker.py`.
 
 ---
 
