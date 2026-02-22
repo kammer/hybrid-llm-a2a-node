@@ -1,0 +1,45 @@
+flowchart TB
+    subgraph Local["💻 Your Local Machine (The Muscle / Bridge)"]
+        direction TB
+        AgentScript["agent.py<br>(Game Loop)"]
+        Worker["Python Worker<br>(action_space)"]
+        LocalTools["Local Functions<br>- analyze_crypto_data()<br>- execute_transaction()"]
+        Env[".env<br>(Private Key stored securely)"]
+        
+        AgentScript <--> Worker
+        Worker <--> LocalTools
+        Env -.->|Signs Payloads| LocalTools
+    end
+
+    subgraph Cloud["🧠 Virtuals G.A.M.E. (The Brain)"]
+        direction TB
+        GameAPI["GAME API Endpoint"]
+        LLM["LLM Routing Engine"]
+        Memory["Agent State & Memory<br>(HLP, LLP, Logs)"]
+        
+        GameAPI <--> LLM
+        LLM <--> Memory
+    end
+
+    subgraph Web3["⛓️ Base Sepolia (The Bank / State Machine)"]
+        direction TB
+        RPC["RPC Node<br>(https://sepolia.base.org)"]
+        EVM["Ethereum Virtual Machine"]
+        Ledger["State Ledger<br>(Balances, Smart Contracts)"]
+        
+        RPC <--> EVM
+        EVM <--> Ledger
+    end
+
+    %% Connections between domains
+    AgentScript <=="HTTP / JSON-RPC<br>(Prompts & Tool Calls)"==> GameAPI
+    LocalTools =="Signed JSON-RPC<br>(Transactions)"==> RPC
+    
+    %% Softer, high-contrast styles
+    classDef local fill:#eef7ee,stroke:#4CAF50,stroke-width:2px,color:#000;
+    classDef cloud fill:#eef5fb,stroke:#2196F3,stroke-width:2px,color:#000;
+    classDef web3 fill:#f5eefb,stroke:#9C27B0,stroke-width:2px,color:#000;
+    
+    class Local local;
+    class Cloud cloud;
+    class Web3 web3;
