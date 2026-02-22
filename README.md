@@ -1,7 +1,5 @@
-
-# 🧠 Hybrid LLM Agent-to-Agent (A2A) Node  
+# 🧠 Hybrid LLM Agent-to-Agent (A2A) Node
 ### Cloud Intelligence × Local Execution × On-Chain Settlement
-### Local Python Agent connected to Virtuals GAME SDK + Base Sepolia
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -9,31 +7,15 @@
 ![LLM](https://img.shields.io/badge/LLM-Virtuals%20GAME-orange)
 ![Architecture](https://img.shields.io/badge/Architecture-Hybrid%20Cloud%20%2B%20Local-black)
 
-This repository demonstrates a **hybrid autonomous agent architecture** in which:
+A minimal but extensible blueprint for building **autonomous Web3 agents**, combining cloud LLM reasoning with local Python execution and on-chain settlement on Base Sepolia.
 
-- A **local Python agent** provides real execution capabilities
-- A **cloud-based LLM (Virtuals GAME)** performs reasoning and routing
-- The agent can trigger blockchain actions on **Base Sepolia**
+- 🧠 **Reasoning** — Cloud-hosted LLM via [Virtuals G.A.M.E.](https://console.game.virtuals.io/)
+- 💻 **Execution** — Local Python with private key isolation
+- ⛓️ **Settlement** — Final state transitions on Base Sepolia
 
-It showcases a hybrid architecture:
-
-- 🧠 Reasoning is performed by a cloud-hosted LLM (Virtuals GAME)
-- 💻 Execution capabilities remain local in Python
-- ⛓️ Final state transitions settle on Base Sepolia
-
-The project illustrates how to safely combine:
-
-- Tool-based LLM orchestration
-- Local private key isolation
-- Structured agent memory handling
-- On-chain transaction execution
-
-This is a minimal but extensible blueprint for building autonomous Web3 agents.
 ---
 
-# 🏗 Architecture Overview
-
-## System-Level Overview
+## 🏗 Architecture
 
 ```mermaid
 flowchart TB
@@ -83,14 +65,14 @@ flowchart TB
 
 ---
 
-# 🔄 Agentic Execution Flow
+## 🔄 Agentic Execution Flow
 
 ```mermaid
 sequenceDiagram
     autonumber
     participant Terminal as Your Terminal
     participant Python as Local Python Script
-    participant Cloud as Virtuals Cloud (LLM)
+    participant Cloud as Virtuals G.A.M.E. (LLM)
     participant Base as Base Blockchain (RPC)
 
     Terminal->>Python: python agent.py
@@ -118,56 +100,22 @@ sequenceDiagram
         Python->>Terminal: Display Success
     end
 ```
----
-
-# 🧪 Architectural Properties
-
-### Deterministic Execution Boundary
-LLM reasoning is non-deterministic.  
-Local tool execution remains deterministic and auditable.
-
-### Secure Key Isolation
-Private keys never leave the local machine.  
-The cloud LLM only decides *what* to do — not *how to sign*.
-
-### Agent Memory as State Machine
-The agent’s HLP/LLP memory logs function as a soft state machine, enabling:
-
-- Multi-step reasoning
-- Emergent goal transitions
-- Conditional tool routing
-
-### Extensibility
-Additional workers can be attached to expand capability:
-
-- Market execution
-- DAO governance interaction
-- Cross-agent payment settlement
-- Oracle data ingestion
 
 ---
 
-# 🧩 What This Project Demonstrates
+## 🧪 Architectural Properties
 
-### ✅ Cloud-Local Hybrid Agent Architecture  
-LLM reasoning lives in the cloud.  
-Execution power lives locally.
+**Deterministic Execution Boundary** — LLM reasoning is non-deterministic; local tool execution remains deterministic and auditable.
 
-### ✅ Tool Registration via GAME SDK  
-Local Python functions are exposed as structured callable tools.
+**Secure Key Isolation** — Private keys never leave the local machine. The cloud LLM only decides *what* to do — not *how to sign*.
 
-### ✅ State & Memory Handling  
-Agent state is extracted robustly from `agent.step()` responses.
+**Agent Memory as State Machine** — The agent's HLP/LLP memory logs function as a soft state machine, enabling multi-step reasoning, emergent goal transitions, and conditional tool routing.
 
-### ✅ Secure Private Key Handling  
-Private keys remain local inside `.env` and never leave your machine.
-
-### ✅ A2A Decision Loop  
-Agent analyzes → recommends → executes → updates memory.
+**Extensibility** — Additional workers can be attached to expand capability: market execution, DAO governance interaction, cross-agent payment settlement, oracle data ingestion.
 
 ---
 
-# 📂 Project Structure
+## 📂 Project Structure
 
 ```
 .
@@ -179,16 +127,16 @@ Agent analyzes → recommends → executes → updates memory.
 
 ---
 
-# ⚙️ Installation
+## ⚙️ Installation
 
-## 1️⃣ Clone the repository
+**1. Clone the repository**
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
 cd YOUR_REPO
 ```
 
-## 2️⃣ Create virtual environment
+**2. Create virtual environment**
 
 ```bash
 python -m venv venv
@@ -196,7 +144,7 @@ source venv/bin/activate  # macOS / Linux
 venv\Scripts\activate     # Windows
 ```
 
-## 3️⃣ Install dependencies
+**3. Install dependencies**
 
 ```bash
 pip install -r requirements.txt
@@ -204,62 +152,39 @@ pip install -r requirements.txt
 
 ---
 
-# 🔐 Environment Variables
+## 🔐 Environment Variables
 
 Create a `.env` file:
 
 ```
-GAME_API_KEY=your_virtuals_api_key
+GAME_API_KEY=your_virtuals_game_api_key   # Get yours at https://console.game.virtuals.io/
 PRIVATE_KEY=your_wallet_private_key
 ```
 
-Add this to `.gitignore`:
-
-```
-.env
-```
+Add `.env` to your `.gitignore` to ensure your private key is never committed.
 
 ---
 
-# ▶️ Run the Agent
+## ▶️ Running the Agent
 
 ```bash
 python agent.py
 ```
 
-You will see:
-
-- Agent goal
-- LLM reasoning
-- Tool execution
-- Memory updates
-- Function results
+The terminal will display the agent's goal, LLM reasoning, tool execution steps, memory updates, and function results in real time.
 
 ---
 
-# 🚀 Why This Matters
-
-This architecture enables:
-
-- Autonomous agents with real-world execution
-- Secure key isolation
-- Composable AI + Web3 workflows
-- Agent-to-Agent economies
-
-It’s a minimal but powerful demonstration of **LLM-driven blockchain agents**.
-
----
-
-# 📜 License
+## 📜 License
 
 MIT License
 
 ---
 
-# 👤 Author
+## 👤 Author
 
-Built as an experimental A2A prototype combining:
+**Raimund Kammering**
 
-- Python execution
-- Virtuals GAME SDK
-- Base Sepolia network
+Experimental A2A prototype combining Python execution, [Virtuals G.A.M.E. SDK](https://console.game.virtuals.io/), and Base Sepolia.
+
+Public wallet: `0x072C12957983104891DCEB9C1C90dD94eda7Ca8C`
