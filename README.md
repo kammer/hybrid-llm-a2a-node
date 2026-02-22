@@ -149,8 +149,8 @@ As the project grows, new capabilities slot in cleanly — e.g. `agents/market_a
 **1. Clone the repository**
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone https://github.com/kammer/hybrid-llm-a2a-node.git
+cd hybrid-llm-a2a-node
 ```
 
 **2. Create virtual environment**
@@ -185,7 +185,7 @@ Add `.env` to your `.gitignore` to ensure your private key is never committed.
 ## ▶️ Running the Agent
 
 ```bash
-python agent.py
+python agents/agent.py
 ```
 
 The terminal will display the agent's goal, LLM reasoning, tool execution steps, memory updates, and function results in real time.
